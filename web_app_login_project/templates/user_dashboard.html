@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Welcome, {{ current_user.username }}</h2>
+        <p>Email: {{ current_user.email }}</p>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+
+      <!-- Displaying list of projects in a table -->
+      <div class="container mt-5">
+      <h2>Your Projects</h2>
+      </div>
+      
+      <div class="container mt-5">
+      <table border="1">
+          <thead>
+              <tr>
+                  <th>Project Title</th>
+                  <th>GitHub URL</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for project in projects %}
+              <tr>
+                  <td><a href="{{ project.github_url }}" target="_blank">{{ project.title }}</a></td>
+                  <td><a href="{{ project.github_url }}" target="_blank">View Project</a></td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    </div>
+      <div class="container mt-5">
+      <table border="1">
+        <thead>
+            <tr>
+                <th>Project Title</th>
+                <th>View Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td>{{ project.title }}</td>
+                <td><a href="{{ url_for('view_project', project_id=project.id) }}">View Files</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    </div class="container mt-5">
+
+        <h3>New Projects</h3>
+        <!-- Button to add a new project git-->
+      <a href="{{ url_for('add_projectgit') }}"><button>Add New Project GitHub</button></a>
+  
+      
+      <!-- Button to add a new project Zip -->
+      <a href="{{ url_for('add_project') }}"><button>Add New Project Zip</button></a>
+    </div>
+</body>
+</html>

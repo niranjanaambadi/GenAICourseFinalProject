@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Files: {{ project.title }}</title>
+</head>
+<body>
+    <h1>{{ project.title }} - Files</h1>
+
+    <h2>Code Files</h2>
+    <ul>
+        {% for file in project_files %}
+        <li><a href="{{ url_for('view_code', project_id=project.id, filename=file) }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('user_landing') }}">Back to Dashboard</a>
+</body>
+</html>

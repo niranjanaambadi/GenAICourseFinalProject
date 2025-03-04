@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Landing Page</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>You are now logged in.</p>
+
+    <!-- Displaying list of projects in a table -->
+    <h2>Your Projects</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Project Title</th>
+                <th>GitHub URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td><a href="{{ project.github_url }}" target="_blank">{{ project.title }}</a></td>
+                <td><a href="{{ project.github_url }}" target="_blank">View Project</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Button to add a new project -->
+    <a href="{{ url_for('add_project') }}"><button>Add New Project</button></a>
+
+    <!-- Logout Button -->
+    <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+</body>
+</html>

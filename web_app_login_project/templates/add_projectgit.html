@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Project</title>
+</head>
+<body>
+    <h2>Add New Project</h2>
+    <form action="/add_projectgit" method="POST">
+        <div>
+            <label for="title">Project Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="github_url">GitHub URL:</label>
+            <input type="url" id="github_url" name="github_url" required>
+        </div>
+        <button type="submit">Add Project</button>
+    </form>
+
+    <a href="{{ url_for('user_dashboard') }}">Back to User Dashboard</a>
+</body>
+</html>
